@@ -9,10 +9,11 @@ export const BasicBtn = ({ onClick, text }) => {
   );
 };
 
-export const InputAuthField = ({ placeholder }) => {
+export const InputAuthField = ({ placeholder, name }) => {
   return (
     <FilledInput
       fullWidth
+      name={name}
       color="secondary"
       placeholder={placeholder}
       sx={{ padding: "6px" }}

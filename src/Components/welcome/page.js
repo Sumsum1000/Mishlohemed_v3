@@ -1,3 +1,4 @@
+"use client";
 import {
   BasicBtn,
   PageContainer,
@@ -24,11 +25,18 @@ const Welcome = () => {
         <Typography variant="h5">להתחבר - לתרום - לעזור</Typography>
       </ButtonContainer>
       <ButtonContainer>
-        <BasicBtn onClick={clickLoginHandler} text={"התחבר"} />
-        <BasicBtn onClick={clickRegisterHandler} text={"צור חשבון"} />
+        <BasicBtn
+          rel="stylesheet preload"
+          onClick={clickLoginHandler}
+          text={"התחבר"}
+        />
+        <BasicBtn
+          rel="stylesheet preload"
+          onClick={clickRegisterHandler}
+          text={"צור חשבון"}
+        />
       </ButtonContainer>
     </PageContainer>
   );
 };
-
 export default Welcome;

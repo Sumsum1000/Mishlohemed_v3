@@ -68,11 +68,10 @@ export default function RootLayout({ children }) {
             alignItems={"center"}
             gap={4}
           >
-            <Image alt="logo" src={logo} width={70} />
+            <Image alt="logo" placeholder="logo" src={logo} width={70} />
             <Typography variant="h4">מישלוחמד</Typography>
           </Stack>
 
-          {/* <CardMedia src="logo" /> */}
           <Box>{children}</Box>
         </ThemeProvider>
       </body>

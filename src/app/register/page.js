@@ -1,10 +1,11 @@
 "use client";
-import { InputAuthField } from "@/Components/shared/Shared";
+import InputAuthField from "@/Components/shared/Shared";
 import {
   BasicBtn,
   PageContainer,
   ButtonContainer,
 } from "@/Components/shared/Shared";
+
 import { useRouter } from "next/navigation";
 
 const Register = () => {
@@ -17,9 +18,9 @@ const Register = () => {
   return (
     <PageContainer>
       <ButtonContainer>
-        <InputAuthField />
-        <InputAuthField />
-        <InputAuthField />
+        <InputAuthField name="name" placeholder="שם" />
+        <InputAuthField name="email" placeholder="אי מייל" />
+        <InputAuthField name="password" placeholder="סיסמה" />
       </ButtonContainer>
       <BasicBtn onClick={createAcountHandler} text={"צור חשבון"} />
     </PageContainer>

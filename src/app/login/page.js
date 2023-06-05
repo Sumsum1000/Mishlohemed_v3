@@ -16,8 +16,8 @@ const Login = () => {
   return (
     <PageContainer>
       <ButtonContainer>
-        <InputAuthField placeholder={"אי מייל"} />
-        <InputAuthField placeholder={"סיסמה"} />
+        <InputAuthField name="email" placeholder={"אי מייל"} />
+        <InputAuthField name="password" placeholder={"סיסמה"} />
       </ButtonContainer>
       <BasicBtn onClick={nevigateToManagerHandler} text={"התחבר"} />
     </PageContainer>
