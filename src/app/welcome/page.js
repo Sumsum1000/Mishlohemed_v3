@@ -6,7 +6,7 @@ import {
 import { Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-export const Welcome = () => {
+const Welcome = () => {
   const router = useRouter();
 
   const clickRegisterHandler = () => {
@@ -30,3 +30,5 @@ export const Welcome = () => {
     </PageContainer>
   );
 };
+
+export default Welcome;
