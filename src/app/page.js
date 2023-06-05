@@ -7,16 +7,20 @@ import { Manager } from "./manager/page";
 import { Kehila } from "./kehila/page";
 import { CreateKehila } from "./create-kehila/page";
 import Welcome from "@/Components/welcome/page";
+import { myTheme } from "./theme";
+import { ThemeProvider } from "@mui/material";
 
 export default function Home() {
   return (
-    <PageContainer>
-      <Welcome />
-      {/* <Login /> */}
-      {/* <Register /> */}
-      {/* <Manager /> */}
-      {/* <Kehila /> */}
-      {/* <CreateKehila /> */}
-    </PageContainer>
+    <ThemeProvider theme={myTheme}>
+      <PageContainer>
+        <Welcome />
+        {/* <Login /> */}
+        {/* <Register /> */}
+        {/* <Manager /> */}
+        {/* <Kehila /> */}
+        {/* <CreateKehila /> */}
+      </PageContainer>
+    </ThemeProvider>
   );
 }
