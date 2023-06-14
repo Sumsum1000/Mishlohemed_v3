@@ -1,5 +1,7 @@
-import { createTheme } from "@mui/material";
+import { PageContainer } from "@/Components/shared/Shared";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { lime } from "@mui/material/colors";
+import { Children } from "react";
 
 export const myTheme = createTheme({
   palette: {
@@ -18,6 +20,14 @@ export const myTheme = createTheme({
     fontFamily: "'Oswald'",
   },
 });
+
+export const Wrapper = ({ children }) => {
+  return (
+    <ThemeProvider theme={myTheme}>
+      <PageContainer>{children}</PageContainer>
+    </ThemeProvider>
+  );
+};
 
 //import { Poppins, Arimo } from "next/font/google";
 //import {  Arimo } from "next/font/google";

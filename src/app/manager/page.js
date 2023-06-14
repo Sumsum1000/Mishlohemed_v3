@@ -1,10 +1,12 @@
 "use client";
+import Kehila from "@/Components/kehila/Kehila";
 import {
   BasicBtn,
   PageContainer,
   ButtonContainer,
 } from "@/Components/shared/Shared";
-import { Typography } from "@mui/material";
+import Welcome from "@/Components/welcome/page";
+import { Button, Stack, Typography, Box } from "@mui/material";
 import { useRouter } from "next/navigation";
 
 const Manager = () => {
@@ -14,31 +16,36 @@ const Manager = () => {
   };
 
   return (
-    <PageContainer>
-      <ButtonContainer>
+    <Stack
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        marginTop: "40px",
+        height: "80%",
+      }}
+    >
+      <Stack>
         <Typography variant="h4" color="x" sx={{ marginBottom: 5 }}>
           ברוכים הבאים ארז
         </Typography>
+      </Stack>
 
-        <Typography variant="h5">
-          הפעילות שלנו
-          <br /> גיוס חברתי לטובת משפחות ובודדים המטופלים ברווחה עבור מגוון
-          צרכים מהותיים והכרחיים.
-        </Typography>
-      </ButtonContainer>
+      <Stack spacing={2} sx={{ width: "100%" }}>
+        <Typography>הקהילות שלי</Typography>
+        <Kehila name={"מושב חמד"} />
+        <Kehila name={"עבודה"} />
+        <Kehila name={"חדר כושר"} />
+      </Stack>
 
-      <ButtonContainer>
-        <Typography variant="h5">קהילות קימות</Typography>
-        <div style={{ display: "flex" }}>
-          <Typography variant="h4">קהילה 1</Typography>
-          <Typography variant="h4">קהילה 2</Typography>
-          <Typography variant="h4">קהילה 3</Typography>
-        </div>
-      </ButtonContainer>
-
-      <ButtonContainer></ButtonContainer>
-      <BasicBtn onClick={createKehilaHandler} text={"צור קהילה חדשה"} />
-    </PageContainer>
+      <Button
+        fullWidth
+        variant="contained"
+        onClick={createKehilaHandler}
+        sx={{ marginTop: "auto" }}
+      >
+        צור קהילה חדשה
+      </Button>
+    </Stack>
   );
 };
 export default Manager;

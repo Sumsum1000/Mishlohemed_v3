@@ -1,5 +1,13 @@
 "use client";
-import { Box, Button, FilledInput, Stack } from "@mui/material";
+import styled from "@emotion/styled";
+import {
+  Box,
+  Button,
+  FilledInput,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 export const BasicBtn = ({ onClick, text }) => {
   return (
@@ -12,6 +20,7 @@ export const BasicBtn = ({ onClick, text }) => {
 export const InputAuthField = ({ placeholder, name }) => {
   return (
     <FilledInput
+      className="myClass" // impliment in css
       fullWidth
       name={name}
       color="secondary"
@@ -25,13 +34,11 @@ export const PageContainer = ({ children }) => {
   return (
     <Box
       sx={{
-        //backgroundColor: 'red',
-        height: "75vh",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        marginTop: "40px",
+        backgroundColor: "secondary",
+        height: "100vh",
+        width: "100vw",
+        padding: "24px",
+        //marginTop: "40px",
       }}
     >
       {children}
@@ -55,14 +62,44 @@ export const ButtonContainer = ({ children }) => {
   );
 };
 
-export const StackRow = ({ children }) => {
+export const StackRow = ({ text1, text2 }) => {
   return (
-    <Stack
-      flexDirection={"row"}
-      justifyContent={"space-between"}
-      sx={{ width: "80%", borderBottom: "1px solid black" }}
-    >
-      {children}
-    </Stack>
+    <Paper elevation={1}>
+      <Stack
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        sx={{
+          width: "100%",
+          //border: "1px solid black",
+          padding: "20px",
+          borderRadius: "5px",
+        }}
+      >
+        <Typography color="gray" variant="h5">
+          {text1}
+        </Typography>
+        <Typography variant="h5">{text2}</Typography>
+      </Stack>
+    </Paper>
   );
 };
+
+{
+  /* <Typography color="gray" variant="h5">
+              מספר חברים
+            </Typography>
+            <Typography variant="h5">36</Typography> */
+}
+
+//   <Stack
+//   flexDirection={"row"}
+//   justifyContent={"space-between"}
+//   sx={{
+//     width: "100%",
+//     border: "1px solid black",
+//     padding: "20px",
+//     borderRadius: "5px",
+//   }}
+// >
+//   {children}
+// </Stack>

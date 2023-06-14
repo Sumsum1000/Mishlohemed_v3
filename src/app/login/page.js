@@ -5,6 +5,14 @@ import {
   PageContainer,
   ButtonContainer,
 } from "@/Components/shared/Shared";
+import {
+  FormControl,
+  FormLabel,
+  TextField,
+  Button,
+  Box,
+  Stack,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
@@ -14,13 +22,20 @@ const Login = () => {
   };
 
   return (
-    <PageContainer>
-      <ButtonContainer>
-        <InputAuthField name="email" placeholder={"אי מייל"} />
-        <InputAuthField name="password" placeholder={"סיסמה"} />
-      </ButtonContainer>
-      <BasicBtn onClick={nevigateToManagerHandler} text={"התחבר"} />
-    </PageContainer>
+    <FormControl fullWidth sx={{ height: "80%", marginTop: "40px" }}>
+      <FormLabel>מייל</FormLabel>
+      <TextField></TextField>
+      <FormLabel>סיסמה</FormLabel>
+      <TextField></TextField>
+      <Button
+        onClick={nevigateToManagerHandler}
+        size="large"
+        variant="contained"
+        sx={{ marginTop: "auto" }}
+      >
+        הרשם
+      </Button>
+    </FormControl>
   );
 };
 

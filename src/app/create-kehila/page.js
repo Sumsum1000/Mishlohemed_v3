@@ -5,33 +5,41 @@ import {
   ButtonContainer,
   InputAuthField,
   StackRow,
+  Stack,
 } from "@/Components/shared/Shared";
-import { Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  FormControl,
+  TextField,
+  FormLabel,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 
 const CreateKehila = () => {
   const router = useRouter();
   const createKehilaHandler = () => {
-    router.push("/kehila");
+    router.push("/manager");
   };
 
   return (
-    <PageContainer>
-      <ButtonContainer>
-        <InputAuthField placeholder="שם הקהילה" />
-        <InputAuthField placeholder="סוגי משלוח" />
-        <InputAuthField placeholder="בחר לוגו" />
-        <StackRow>
-          <Typography color="gray" variant="h5">
-            עמותה לתרומה
-          </Typography>
-          <Typography variant="h5">מישלוחמד</Typography>
-        </StackRow>
-      </ButtonContainer>
-      <ButtonContainer>
-        <BasicBtn onClick={createKehilaHandler} text={"צור"} />
-      </ButtonContainer>
-    </PageContainer>
+    <FormControl fullWidth sx={{ height: "80%", marginTop: "40px" }}>
+      <FormLabel>שם קהילה</FormLabel>
+      <TextField></TextField>
+      <FormLabel>סוגי משלוח</FormLabel>
+      <TextField></TextField>
+      <FormLabel>בחר לוגו</FormLabel>
+      <TextField></TextField>
+      <Button
+        onClick={createKehilaHandler}
+        size="large"
+        variant="contained"
+        sx={{ marginTop: "auto" }}
+      >
+        צור קהילה
+      </Button>
+    </FormControl>
   );
 };
 

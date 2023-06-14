@@ -4,8 +4,12 @@ import {
   PageContainer,
   ButtonContainer,
 } from "@/Components/shared/Shared";
-import { Typography } from "@mui/material";
+import { Box, Typography, Button, Stack, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
+import Carousel from "react-material-ui-carousel";
+
+const amutot = ["ניצב רפאל", "עמותה2", "עמותה3"];
+const kehilot = ["מושב חמד", "קהילה", "קהילה3"];
 
 const Welcome = () => {
   const router = useRouter();
@@ -19,24 +23,86 @@ const Welcome = () => {
   };
 
   return (
-    <PageContainer>
-      <ButtonContainer>
+    <Stack
+      direction="column"
+      sx={{
+        height: "80%",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: "20px",
+      }}
+    >
+      <Stack sx={{ alignItems: "center" }}>
         <Typography variant="h3">ברוכים הבאים</Typography>
         <Typography variant="h5">להתחבר - לתרום - לעזור</Typography>
-      </ButtonContainer>
-      <ButtonContainer>
-        <BasicBtn
-          rel="stylesheet preload"
+      </Stack>
+      <Typography variant="h5">
+        הפעילות שלנו
+        <br /> גיוס חברתי לטובת משפחות ובודדים המטופלים ברווחה עבור מגוון צרכים
+        מהותיים והכרחיים.
+      </Typography>
+      <Stack direction="row" sx={{ width: "100%", alignItems: "space-around" }}>
+        <Button
+          fullwidth
+          size="large"
+          variant="contained"
           onClick={clickLoginHandler}
-          text={"התחבר"}
-        />
-        <BasicBtn
-          rel="stylesheet preload"
+          sx={{ flex: "1" }}
+        >
+          התחבר
+        </Button>
+        <Button
+          fullwidth
+          size="large"
+          variant="contained"
           onClick={clickRegisterHandler}
-          text={"צור חשבון"}
-        />
-      </ButtonContainer>
-    </PageContainer>
+          sx={{ flex: "1" }}
+        >
+          צור חשבון
+        </Button>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: "100%",
+        }}
+      >
+        <Typography>העמותות שלנו</Typography>
+        <Carousel
+          fullwidth
+          next={(next, active) =>
+            console.log(`we left ${active}, and are now at ${next}`)
+          }
+          prev={(prev, active) =>
+            console.log(`we left ${active}, and are now at ${prev}`)
+          }
+        >
+          {amutot.map((item, i) => (
+            <h2>{item}</h2>
+          ))}
+        </Carousel>
+      </Stack>
+
+      <Stack
+        sx={{
+          width: "100%",
+        }}
+      >
+        <Typography>הקהילות שלנו</Typography>
+        <Carousel
+          next={(next, active) =>
+            console.log(`we left ${active}, and are now at ${next}`)
+          }
+          prev={(prev, active) =>
+            console.log(`we left ${active}, and are now at ${prev}`)
+          }
+        >
+          {kehilot.map((item, i) => (
+            <h2>{item}</h2>
+          ))}
+        </Carousel>
+      </Stack>
+    </Stack>
   );
 };
 export default Welcome;
