@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {
   Box,
   Button,
+  Divider,
   FilledInput,
   Paper,
   Stack,
@@ -38,7 +39,6 @@ export const PageContainer = ({ children }) => {
         height: "100vh",
         width: "100vw",
         padding: "24px",
-        //marginTop: "40px",
       }}
     >
       {children}
@@ -64,14 +64,14 @@ export const ButtonContainer = ({ children }) => {
 
 export const StackRow = ({ text1, text2 }) => {
   return (
-    <Paper elevation={1}>
+    <Box>
       <Stack
         flexDirection={"row"}
         justifyContent={"space-between"}
         sx={{
           width: "100%",
-          //border: "1px solid black",
           padding: "20px",
+          paddingBottom: 0,
           borderRadius: "5px",
         }}
       >
@@ -80,26 +80,7 @@ export const StackRow = ({ text1, text2 }) => {
         </Typography>
         <Typography variant="h5">{text2}</Typography>
       </Stack>
-    </Paper>
+      <Divider />
+    </Box>
   );
 };
-
-{
-  /* <Typography color="gray" variant="h5">
-              מספר חברים
-            </Typography>
-            <Typography variant="h5">36</Typography> */
-}
-
-//   <Stack
-//   flexDirection={"row"}
-//   justifyContent={"space-between"}
-//   sx={{
-//     width: "100%",
-//     border: "1px solid black",
-//     padding: "20px",
-//     borderRadius: "5px",
-//   }}
-// >
-//   {children}
-// </Stack>
