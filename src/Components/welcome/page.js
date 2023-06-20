@@ -6,10 +6,26 @@ import {
 } from "@/Components/shared/Shared";
 import { Box, Typography, Button, Stack, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 
-const amutot = ["ניצב רפאל", "עמותה2", "עמותה3"];
-const kehilot = ["מושב חמד", "קהילה", "קהילה3"];
+const amutot = ["ניצב רפאל", "עמותה2", "עמותה3", "עמותה4", "עמותה5", "עמותה6"];
+const kehilot = ["מושב חמד", "קהילה", "קהילה3", "קהילה4", "קהילה5", "קהילה6"];
+
+const numOfItems = 3;
+const createCarouselItem = (arr) => {
+  let finalArr = [];
+  let temp = [];
+  for (let i = 0; i < arr.legth; i + numOfItems) {
+    if (i % numOfItems === 0) {
+      const subArr = numOfItems.splice(i, i + numOfItems);
+      temp.push(subArr);
+      finalArr.push(temp);
+    }
+  }
+
+  console.log(finalArr);
+};
 
 const Welcome = () => {
   const router = useRouter();
@@ -21,6 +37,10 @@ const Welcome = () => {
   const clickLoginHandler = () => {
     router.push("/login");
   };
+
+  useEffect(() => {
+    createCarouselItem(amutot);
+  }, []);
 
   return (
     <Stack
@@ -70,12 +90,12 @@ const Welcome = () => {
         <Typography>העמותות שלנו</Typography>
         <Carousel
           fullwidth
-          next={(next, active) =>
-            console.log(`we left ${active}, and are now at ${next}`)
-          }
-          prev={(prev, active) =>
-            console.log(`we left ${active}, and are now at ${prev}`)
-          }
+          // next={(next, active) =>
+          //   console.log(`we left ${active}, and are now at ${next}`)
+          // }
+          // prev={(prev, active) =>
+          //   console.log(`we left ${active}, and are now at ${prev}`)
+          // }
         >
           {amutot.map((item, i) => (
             <h2>{item}</h2>
