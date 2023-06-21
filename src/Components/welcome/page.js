@@ -3,32 +3,28 @@ import {
   BasicBtn,
   PageContainer,
   ButtonContainer,
+  StackRow,
 } from "@/Components/shared/Shared";
-import { Box, Typography, Button, Stack, Container } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  Stack,
+  Container,
+  Card,
+  Grid,
+  SubCategory,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 
-const amutot = ["ניצב רפאל", "עמותה2", "עמותה3", "עמותה4", "עמותה5", "עמותה6"];
+const amutot = ["ניצב רפאל", "עמותה2", "עמותה3", "עמותה4", "עמותה5"];
 const kehilot = ["מושב חמד", "קהילה", "קהילה3", "קהילה4", "קהילה5", "קהילה6"];
-
-const numOfItems = 3;
-const createCarouselItem = (arr) => {
-  let finalArr = [];
-  let temp = [];
-  for (let i = 0; i < arr.legth; i + numOfItems) {
-    if (i % numOfItems === 0) {
-      const subArr = numOfItems.splice(i, i + numOfItems);
-      temp.push(subArr);
-      finalArr.push(temp);
-    }
-  }
-
-  console.log(finalArr);
-};
 
 const Welcome = () => {
   const router = useRouter();
+  const [amutotCrousel, setAmutotCarousel] = useState([]);
 
   const clickRegisterHandler = () => {
     router.push("/register");
@@ -39,8 +35,17 @@ const Welcome = () => {
   };
 
   useEffect(() => {
-    createCarouselItem(amutot);
+    const rootTemp = [];
+    for (let i = 0; i < amutot.length; i + 2) {
+      const temp = amutot.splice(i, i + 2);
+      rootTemp.push(temp);
+      setAmutotCarousel(rootTemp);
+    }
   }, []);
+
+  useEffect(() => {
+    console.log("loglog", amutotCrousel);
+  }, [amutotCrousel]);
 
   return (
     <Stack
@@ -85,9 +90,11 @@ const Welcome = () => {
       <Stack
         sx={{
           width: "100%",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <Typography>העמותות שלנו</Typography>
+        <Typography textAlign={"center"}>העמותות שלנו</Typography>
         <Carousel
           fullwidth
           // next={(next, active) =>
@@ -97,9 +104,23 @@ const Welcome = () => {
           //   console.log(`we left ${active}, and are now at ${prev}`)
           // }
         >
-          {amutot.map((item, i) => (
+          {/* {amutot.map((item, i) => (
             <h2>{item}</h2>
-          ))}
+          ))} */}
+          {amutotCrousel.map((item) => {
+            return (
+              <Stack
+                direction={"row"}
+                sx={{
+                  justifyContent: "center",
+                  gap: "50px",
+                }}
+              >
+                <h2>{item[0]}</h2>
+                <h2>{item[1]}</h2>
+              </Stack>
+            );
+          })}
         </Carousel>
       </Stack>
 
@@ -108,14 +129,14 @@ const Welcome = () => {
           width: "100%",
         }}
       >
-        <Typography>הקהילות שלנו</Typography>
+        <Typography textAlign={"center"}>הקהילות שלנו</Typography>
         <Carousel
-          next={(next, active) =>
-            console.log(`we left ${active}, and are now at ${next}`)
-          }
-          prev={(prev, active) =>
-            console.log(`we left ${active}, and are now at ${prev}`)
-          }
+        // next={(next, active) =>
+        //   console.log(`we left ${active}, and are now at ${next}`)
+        // }
+        // prev={(prev, active) =>
+        //   console.log(`we left ${active}, and are now at ${prev}`)
+        // }
         >
           {kehilot.map((item, i) => (
             <h2>{item}</h2>
