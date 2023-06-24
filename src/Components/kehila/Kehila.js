@@ -5,13 +5,21 @@ import {
   Stack,
   MenuItem,
   FormControl,
+  Button,
 } from "@mui/material";
 import { StackRow } from "../shared/Shared";
 import { useState } from "react";
 import Image from "next/image";
 import logo from "../../Graphics/QR.jpg";
+import { useRouter } from "next/navigation";
 
 const Kehila = ({ name }) => {
+  const router = useRouter();
+
+  const nevigateToMembersHandler = () => {
+    router.push("/members");
+  };
+
   const [expandToggle, setExpandToggle] = useState(false);
   const [size, setSize, setValue] = useState("ללא");
   const [amuta, setAmuta] = useState("ללא");
@@ -44,7 +52,10 @@ const Kehila = ({ name }) => {
         InputProps={{
           readOnly: true,
         }}
-        sx={{ direction: "rtl" }}
+        sx={{
+          direction: "rtl",
+          backgroundColor: "lightgray",
+        }}
       ></TextField>
       <br />
       {expandToggle && (
@@ -92,6 +103,14 @@ const Kehila = ({ name }) => {
             <Typography variant="h5">קישור לקהילה</Typography>
             <Image alt="logo" src={logo} width={70} />
           </Stack>
+          <Button
+            onClick={nevigateToMembersHandler}
+            size="large"
+            variant="contained"
+            sx={{ alignItems: "center", marginBottom: "30px" }}
+          >
+            חברי הקהילה
+          </Button>
         </Stack>
       )}
     </FormControl>
