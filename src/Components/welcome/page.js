@@ -1,30 +1,43 @@
 "use client";
-import {
-  BasicBtn,
-  PageContainer,
-  ButtonContainer,
-  StackRow,
-} from "@/Components/shared/Shared";
-import {
-  Box,
-  Typography,
-  Button,
-  Stack,
-  Container,
-  Card,
-  Grid,
-  SubCategory,
-} from "@mui/material";
+// import {
+//   BasicBtn,
+//   PageContainer,
+//   ButtonContainer,
+//   StackRow,
+// } from "@/Components/shared/Shared";
+import { Typography, Button, Stack } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
+import Image from "next/image";
+import logo from "../../Graphics/Logo2.png";
 
-const amutot = ["ניצב רפאל", "עמותה2", "עמותה3", "עמותה4", "עמותה5"];
-const kehilot = ["מושב חמד", "קהילה", "קהילה3", "קהילה4", "קהילה5", "קהילה6"];
-
+const numOfItems = 2;
+const amutot = [
+  "ניצב רפאל",
+  "עמותה2",
+  "עמותה3",
+  "עמותה4",
+  "עמותה5",
+  "עמותה6",
+  "עמותה7",
+];
+const kehilot = [
+  "מושב חמד",
+  "קהילה",
+  "עבודה",
+  "חדר כושר",
+  "קהילה5",
+  "קהילה6",
+  ,
+  "קהילה7",
+  "קהילה8",
+  "קהילה9",
+];
 const Welcome = () => {
   const router = useRouter();
   const [amutotCrousel, setAmutotCarousel] = useState([]);
+  const [kehilotCarousel, setKehilotCarousel] = useState([]);
 
   const clickRegisterHandler = () => {
     router.push("/register");
@@ -35,17 +48,22 @@ const Welcome = () => {
   };
 
   useEffect(() => {
-    const rootTemp = [];
-    for (let i = 0; i < amutot.length; i + 2) {
-      const temp = amutot.splice(i, i + 2);
-      rootTemp.push(temp);
-      setAmutotCarousel(rootTemp);
+    // set Amutot for carousel
+    const amutotTemp = [];
+    for (let i = 0; i < amutot.length; i + numOfItems) {
+      const temp = amutot.splice(i, i + numOfItems);
+      amutotTemp.push(temp);
+      setAmutotCarousel(amutotTemp);
+    }
+
+    // set Kehilot for carousel
+    const kehilotTemp = [];
+    for (let i = 0; i < kehilot.length; i + numOfItems) {
+      const temp = kehilot.splice(i, i + numOfItems);
+      kehilotTemp.push(temp);
+      setKehilotCarousel(kehilotTemp);
     }
   }, []);
-
-  useEffect(() => {
-    console.log("loglog", amutotCrousel);
-  }, [amutotCrousel]);
 
   return (
     <Stack
@@ -57,7 +75,7 @@ const Welcome = () => {
         marginTop: "20px",
       }}
     >
-      <Stack sx={{ alignItems: "center" }}>
+      <Stack sx={{ alignItems: "center", marginBottom: "30px" }}>
         <Typography variant="h3">ברוכים הבאים</Typography>
         <Typography variant="h5">להתחבר - לתרום - לעזור</Typography>
       </Stack>
@@ -66,7 +84,10 @@ const Welcome = () => {
         <br /> גיוס חברתי לטובת משפחות ובודדים המטופלים ברווחה עבור מגוון צרכים
         מהותיים והכרחיים.
       </Typography>
-      <Stack direction="row" sx={{ width: "100%", alignItems: "space-around" }}>
+      <Stack
+        direction="row"
+        sx={{ width: "100%", alignItems: "space-around", padding: "30px 0" }}
+      >
         <Button
           fullwidth
           size="large"
@@ -116,8 +137,20 @@ const Welcome = () => {
                   gap: "50px",
                 }}
               >
-                <h2>{item[0]}</h2>
-                <h2>{item[1]}</h2>
+                {item.map((it) => {
+                  return (
+                    <Stack
+                      spacing={2}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Image src={logo} height={80} alt="Logo of Amuta" />
+                      <Typography>{it}</Typography>
+                    </Stack>
+                  );
+                })}
               </Stack>
             );
           })}
@@ -138,9 +171,32 @@ const Welcome = () => {
         //   console.log(`we left ${active}, and are now at ${prev}`)
         // }
         >
-          {kehilot.map((item, i) => (
-            <h2>{item}</h2>
-          ))}
+          {kehilotCarousel.map((item) => {
+            return (
+              <Stack
+                direction={"row"}
+                sx={{
+                  justifyContent: "center",
+                  gap: "50px",
+                }}
+              >
+                {item.map((it) => {
+                  return (
+                    <Stack
+                      spacing={2}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Image src={logo} height={80} alt="Logo of Kehila" />
+                      <Typography>{it}</Typography>
+                    </Stack>
+                  );
+                })}
+              </Stack>
+            );
+          })}
         </Carousel>
       </Stack>
     </Stack>
