@@ -14,7 +14,7 @@ import logo from "../../Graphics/QR.jpg";
 const Kehila = ({ name }) => {
   const [expandToggle, setExpandToggle] = useState(false);
   const [size, setSize, setValue] = useState("ללא");
-  const [amuta, setAmuta] = useState("BBB");
+  const [amuta, setAmuta] = useState("ללא");
 
   const handleSizeChange = (e) => {
     if (!e.target.classList.contains("MuiMenuItem-root")) {
@@ -58,9 +58,10 @@ const Kehila = ({ name }) => {
             select
             value={size}
             fullWidth
+            defaultValue={"ללא"}
             onChange={handleSizeChange}
           >
-            <MenuItem value="">
+            <MenuItem value="ללא">
               <em>ללא</em>
             </MenuItem>
             <MenuItem value={10}>קטן</MenuItem>
@@ -72,16 +73,15 @@ const Kehila = ({ name }) => {
             select
             value={amuta}
             fullWidth
+            defaultValue={"ללא"}
             onChange={handleAmutaChange}
           >
-            <MenuItem value="">
+            <MenuItem value="ללא">
               <em>ללא</em>
             </MenuItem>
             <MenuItem value={"משלוחמד"}>משלוחמד</MenuItem>
             <MenuItem value={"תנו לחיות לחיות"}>תנו לחיות לחיות</MenuItem>
           </TextField>
-
-          {/* <StackRow text1="עמותה לתרומה" ל text2="מישלוחמד" /> */}
 
           <Stack
             flexDirection={"row"}

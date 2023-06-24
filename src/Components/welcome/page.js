@@ -125,9 +125,6 @@ const Welcome = () => {
           //   console.log(`we left ${active}, and are now at ${prev}`)
           // }
         >
-          {/* {amutot.map((item, i) => (
-            <h2>{item}</h2>
-          ))} */}
           {amutotCrousel.map((item) => {
             return (
               <Stack
