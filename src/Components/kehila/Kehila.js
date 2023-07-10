@@ -25,21 +25,24 @@ const Kehila = ({ name }) => {
   const [amuta, setAmuta] = useState("ללא");
 
   const handleSizeChange = (e) => {
-    if (!e.target.classList.contains("MuiMenuItem-root")) {
-      setOpen(false);
-    }
+    e.preventDefault();
     setSize(e.target.value);
+    setExpandToggle(true);
   };
 
   const handleAmutaChange = (e) => {
-    if (!e.target.classList.contains("MuiMenuItem-root")) {
-      setOpen(false);
-    }
+    e.preventDefault();
     setAmuta(e.target.value);
+    setExpandToggle(true);
   };
 
   const toggleExpand = () => {
-    setExpandToggle(!expandToggle);
+    if (!expandToggle) {
+      setExpandToggle(true);
+    }
+    if (expandToggle) {
+      setExpandToggle(false);
+    }
   };
 
   return (
@@ -86,6 +89,7 @@ const Kehila = ({ name }) => {
             fullWidth
             defaultValue={"ללא"}
             onChange={handleAmutaChange}
+            onMouseDown={(e) => e.preventDefault()}
           >
             <MenuItem value="ללא">
               <em>ללא</em>
