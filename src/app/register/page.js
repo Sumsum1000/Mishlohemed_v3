@@ -26,11 +26,11 @@ const Register = () => {
   };
 
   const registerGoogleHandler = async () => {
-    // try {
-    //   await signInWithPopup(auth, googleProvider);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
