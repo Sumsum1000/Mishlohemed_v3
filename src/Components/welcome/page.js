@@ -7,6 +7,7 @@ import {
 import { Box, Typography, Button, Stack, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Carousel from "react-material-ui-carousel";
+import { nanoid } from "nanoid";
 
 const amutot = ["ניצב רפאל", "עמותה2", "עמותה3"];
 const kehilot = ["מושב חמד", "קהילה", "קהילה3"];
@@ -43,7 +44,6 @@ const Welcome = () => {
       </Typography>
       <Stack direction="row" sx={{ width: "100%", alignItems: "space-around" }}>
         <Button
-          fullwidth
           size="large"
           variant="contained"
           onClick={clickLoginHandler}
@@ -52,7 +52,6 @@ const Welcome = () => {
           התחבר
         </Button>
         <Button
-          fullwidth
           size="large"
           variant="contained"
           onClick={clickRegisterHandler}
@@ -70,15 +69,15 @@ const Welcome = () => {
         <Typography>העמותות שלנו</Typography>
         <Carousel
           fullwidth
-          next={(next, active) =>
-            console.log(`we left ${active}, and are now at ${next}`)
-          }
-          prev={(prev, active) =>
-            console.log(`we left ${active}, and are now at ${prev}`)
-          }
+          // next={(next, active) =>
+          //   console.log(`we left ${active}, and are now at ${next}`)
+          // }
+          // prev={(prev, active) =>
+          //   console.log(`we left ${active}, and are now at ${prev}`)
+          // }
         >
           {amutot.map((item, i) => (
-            <h2>{item}</h2>
+            <h2 key={nanoid()}>{item}</h2>
           ))}
         </Carousel>
       </Stack>
@@ -90,15 +89,15 @@ const Welcome = () => {
       >
         <Typography>הקהילות שלנו</Typography>
         <Carousel
-          next={(next, active) =>
-            console.log(`we left ${active}, and are now at ${next}`)
-          }
-          prev={(prev, active) =>
-            console.log(`we left ${active}, and are now at ${prev}`)
-          }
+        // next={(next, active) =>
+        //   console.log(`we left ${active}, and are now at ${next}`)
+        // }
+        // prev={(prev, active) =>
+        //   console.log(`we left ${active}, and are now at ${prev}`)
+        // }
         >
           {kehilot.map((item, i) => (
-            <h2>{item}</h2>
+            <h2 key={nanoid()}>{item}</h2>
           ))}
         </Carousel>
       </Stack>
