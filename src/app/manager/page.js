@@ -33,15 +33,19 @@ const Manager = () => {
       <Stack spacing={2} sx={{ width: "100%" }}>
         <Typography>הקהילות שלי</Typography>
         <Kehila name={"מושב חמד"} />
+        <Box sx={{ border: "1px solid black" }} />
         <Kehila name={"עבודה"} />
+        <Box sx={{ border: "1px solid black" }} />
         <Kehila name={"חדר כושר"} />
+        <Box sx={{ border: "1px solid black" }} />
       </Stack>
 
       <Button
         fullWidth
         variant="contained"
+        size="large"
         onClick={createKehilaHandler}
-        sx={{ marginTop: "auto" }}
+        sx={{ marginTop: "30px" }}
       >
         צור קהילה חדשה
       </Button>
