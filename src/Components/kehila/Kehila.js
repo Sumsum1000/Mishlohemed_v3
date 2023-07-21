@@ -13,7 +13,7 @@ import Image from "next/image";
 import logo from "../../Graphics/QR.jpg";
 import { useRouter } from "next/navigation";
 
-const Kehila = ({ name }) => {
+const Kehila = ({ name, numOfMembers, collectedMoney, registeredMoney }) => {
   const router = useRouter();
 
   const nevigateToMembersHandler = () => {
@@ -63,9 +63,9 @@ const Kehila = ({ name }) => {
       <br />
       {expandToggle && (
         <Stack spacing={2} sx={{ marginTop: "20px" }}>
-          <StackRow text1="מספר חברים" text2="36" />
-          <StackRow text1="כסף שנאסף" text2="2,740 שח" />
-          <StackRow text1=" כסף שנרשם" text2="1,980 שח" />
+          <StackRow text1="מספר חברים" text2={numOfMembers} />
+          <StackRow text1="כסף שנאסף" text2={collectedMoney} />
+          <StackRow text1=" כסף שנרשם" text2={registeredMoney} />
 
           <TextField
             label="סוג משלוח"
